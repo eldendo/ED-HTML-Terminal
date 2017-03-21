@@ -24,7 +24,7 @@
 		var screen = document.getElementById("screenID");
 		var input = document.getElementById("inputID");
 
-		function Tx(ch){screen.value += ch; screen.scrollTop = screen.scrollHeight};
+		function Tx(ch){screen.innerHTML += ch; screen.scrollTop = screen.scrollHeight};
 		function Rx(){	str=input.value; 
 						if (str.length > 0) {	input.value = str.substring(1);
 												return str.substring(0,1)} 
