@@ -12,23 +12,23 @@
 		<p>input field is read and echo's on the screen</p>
 		<br\>
 		<TextArea readOnly id="screenID" rows="25" cols="80"
-				style="color: lime; background-color: black"
-				onClick="getFocus()">
+				style="color: lime; background-color: black">
 		EL DENDO's Very Simple Terminal Emulator V0.1 DEV
 		Copyright (c)2017 by ir. Marc Dendooven
 		</TextArea>
 		<br/>
-		<input type="text" onkeypress="logKey(event.which||event.keyCode)"></input>
+		<input type="text" id="inputID"></input>
 	</body>
 	<script>
-		var key = null; //one key buffer. could be extended to a longer buffer
-		function logKey(ch){key=ch};
 		
 		var screen = document.getElementById("screenID");
+		var input = document.getElementById("inputID");
 
-		function Tx(ch){screen.innerHTML += ch; screen.scrollTop = screen.scrollHeight};
-
-		function Rx() {k=key; key=null; if (k) {return String.fromCharCode(k)} else {return null}};
+		function Tx(ch){screen.value += ch; screen.scrollTop = screen.scrollHeight};
+		function Rx(){	str=input.value; 
+						if (str.length > 0) {	input.value = str.substring(1);
+												return str.substring(0,1)} 
+										else {return null}};
 		
 		function demo(){k=Rx(); if (k) {Tx(k)} }; // copy keyboard to screen
 		
